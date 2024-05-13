@@ -12,6 +12,10 @@ app = Flask(__name__)
 
 port =int(os.getenv('PORT', 5000))
 
+@app.route('/', methods=['GET'])
+def hello():
+    return "Hello World!"
+
 @app.route('/getSpecificUser',methods=['GET'])
 def get_specific_user():
     userID = request.form['userID']
@@ -46,4 +50,4 @@ def update_user():
 
 if __name__ == "__main__":
     createTables()
-    app.run(host='0.0.0.0',port=port)
+    app.run(port=port)
