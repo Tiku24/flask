@@ -3,6 +3,10 @@ from flask import Flask,request,jsonify
 from db.create import createTables,createUser
 from db.getUsers import getAllUsers,getSpecificUser
 from db.updateOperation import updateUserAccess
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 app = Flask(__name__)
 
