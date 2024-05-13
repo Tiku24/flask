@@ -4,11 +4,13 @@ from db.create import createTables,createUser
 from db.getUsers import getAllUsers,getSpecificUser
 from db.updateOperation import updateUserAccess
 from dotenv import load_dotenv
-
+import os
 
 load_dotenv()
 
 app = Flask(__name__)
+
+port =int(os.getenv('PORT', 5000))
 
 @app.route('/getSpecificUser',methods=['GET'])
 def get_specific_user():
@@ -44,4 +46,4 @@ def update_user():
 
 if __name__ == "__main__":
     createTables()
-    app.run()
+    app.run(port=port)
