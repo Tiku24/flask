@@ -35,9 +35,9 @@ def create_user():
     pincode=request.form['pincode']
     dbres=createUser(name=name,Email=email,Address=address,Phone=phone,password=password,PinCode=pincode)
     if dbres==True:
-        return jsonify({'success':'200','message':'Successfully created'})
+        return jsonify({'success':200,'message':'Successfully created'})
     else:
-        return jsonify({'failed':'400','message':'unable to create user'})
+        return jsonify({'failed':400,'message':'unable to create user'})
     
 
 @app.route("/updateUser_Access",methods=['PATCH']) #for partial update
@@ -50,4 +50,4 @@ def update_user():
 
 if __name__ == "__main__":
     createTables()
-    app.run(host='0.0.0.0',port=port)
+    app.run(port=port)
