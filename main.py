@@ -1,6 +1,6 @@
 
 from flask import Flask,request,jsonify
-from db.create import createTables,createUser
+from db.create import createTables,createUser,add_Product
 from db.getUsers import getAllUsers,getSpecificUser
 from db.updateOperation import updateUserAccess
 from dotenv import load_dotenv
@@ -39,6 +39,17 @@ def create_user():
     else:
         return jsonify({'failed':400,'message':'unable to create user'})
     
+
+@app.route("/addProduct",methods=['POST'])
+def add_product():
+    productName = request.form['product_name']
+    productCategory = request.form['product_category']
+    productPrice = request.form['product_price']
+    dbres=add_Product(Pname=productName,Pcategory=productCategory,Pprice=productPrice)
+    if dbres==True:
+        return jsonify({'success':200,'message':'Successfully added product'})
+    else:
+        return jsonify({'failed':400,'message':'unable to add product'})
 
 @app.route("/updateUser_Access",methods=['PATCH']) #for partial update
 def update_user():

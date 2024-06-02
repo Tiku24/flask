@@ -55,3 +55,15 @@ def createUser(name,password,Address,Email,Phone,PinCode):
         print(f"Error executing query: {e}")
         return False
     
+def add_Product(Pname,Pcategory,Pprice):
+    try:
+        conn =sqlite3.connect("my_medicalShop.db")
+        cursor=conn.cursor()
+        cursor.execute("""INSERT INTO Products(name,price,category,stock,isActive)
+        VALUES (?,?,?,?,?)""",(Pname,Pprice,Pcategory,0,1))
+        conn.commit()
+        conn.close()
+        return True
+    except sqlite3.Error as e:
+        print(f"Error executing query: {e}")
+        return False
