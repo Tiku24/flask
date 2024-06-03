@@ -6,11 +6,11 @@ from db.updateOperation import updateUserAccess
 from dotenv import load_dotenv
 import os
 
+
 load_dotenv()
 
 app = Flask(__name__)
 
-port =int(os.getenv('PORT'))
 
 @app.route('/', methods=['GET'])
 def hello():
@@ -60,5 +60,6 @@ def update_user():
     return "access updated successfully"
 
 if __name__ == "__main__":
+    port =int(os.environ.get('PORT',5000))
     createTables()
     app.run(port=port,host="0.0.0.0")
