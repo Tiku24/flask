@@ -10,7 +10,7 @@ load_dotenv()
 
 app = Flask(__name__)
 
-port =int(os.getenv('PORT', 5000))
+port =int(os.getenv('PORT'))
 
 @app.route('/', methods=['GET'])
 def hello():
@@ -61,4 +61,4 @@ def update_user():
 
 if __name__ == "__main__":
     createTables()
-    app.run(port=port,host='0.0.0.0')
+    app.run(port=port)
