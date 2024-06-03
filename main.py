@@ -65,4 +65,4 @@ def update_user():
 
 if __name__ == "__main__":
     createTables()
-    app.run(host="0.0.0.0",port=port)
+    app.run(port=port)
