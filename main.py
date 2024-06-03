@@ -1,7 +1,7 @@
 
 from flask import Flask,request,jsonify
 from db.create import createTables,createUser,add_Product
-from db.getUsers import getAllUsers,getSpecificUser
+from db.getUsers import getAllUsers,getSpecificUser,getAllProducts
 from db.updateOperation import updateUserAccess
 from dotenv import load_dotenv
 import os
@@ -24,6 +24,10 @@ def get_specific_user():
 @app.route("/getAllUsers",methods=['GET'])
 def get_all_users():
     return getAllUsers()
+
+@app.route("/getProducts",methods=['GET'])
+def get_all_products():
+    return getAllProducts()
 
 @app.route("/createUser",methods=['POST'])
 def create_user():

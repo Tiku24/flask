@@ -51,3 +51,23 @@ def getSpecificUser(userId):
         }
         userJson.append(tempUser)
     return json.dumps(userJson)
+
+def getAllProducts():
+    conn=sqlite3.connect("my_medicalShop.db")
+    cursor=conn.cursor()
+    cursor.execute("SELECT * FROM Products")
+    products=cursor.fetchall()
+    conn.close()
+
+    productJson=[]
+    for product in products:
+        tempProduct={
+            "id":product[0],
+            "name":product[1],
+            "price":product[2],
+            "category":product[3],
+            "stock":product[4],
+            "isActive":product[5]
+        }
+        productJson.append(tempProduct)
+    return json.dumps(productJson)
